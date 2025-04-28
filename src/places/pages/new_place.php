@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/config.php';
-require_once '../../config/database.php';
-require_once '../shared/components/navigation.php';
+require_once __DIR__ . '/../../../config/config.php';
+require_once __DIR__ . '/../../../config/database.php';
+require_once __DIR__ . '/../../shared/components/navigation.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ' . SITE_URL . '/auth');

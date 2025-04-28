@@ -1,7 +1,7 @@
 <?php
-require_once '../../config/config.php';
-require_once '../../config/database.php';
-require_once '../shared/components/navigation.php';
+require_once __DIR__ . '/../../../config/config.php';
+require_once __DIR__ . '/../../../config/database.php';
+require_once __DIR__ . '/../../shared/components/navigation.php';
 
 $userId = $_GET['userId'] ?? null;
 if (!$userId) {

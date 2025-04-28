@@ -4,7 +4,7 @@ require_once '../config/database.php';
 
 // Simple router
 $request = $_SERVER['REQUEST_URI'];
-$basePath = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+$basePath = '/places-app/public';
 $path = str_replace($basePath, '', $request);
 
 // Remove query string if present
@@ -17,11 +17,13 @@ function isLoggedIn() {
 
 // Route handling
 switch ($path) {
+    case '':
     case '/':
         if (isLoggedIn()) {
             require '../src/users/pages/users.php';
         } else {
-            header('Location: /auth');
+            header('Location: ' . SITE_URL . '/auth');
+            exit;
         }
         break;
         
@@ -29,7 +31,8 @@ switch ($path) {
         if (!isLoggedIn()) {
             require '../src/users/pages/auth.php';
         } else {
-            header('Location: /');
+            header('Location: ' . SITE_URL);
+            exit;
         }
         break;
         
@@ -37,7 +40,8 @@ switch ($path) {
         if (isLoggedIn()) {
             require '../src/places/pages/new_place.php';
         } else {
-            header('Location: /auth');
+            header('Location: ' . SITE_URL . '/auth');
+            exit;
         }
         break;
         
@@ -51,7 +55,8 @@ switch ($path) {
         if (isLoggedIn()) {
             require '../src/places/pages/update_place.php';
         } else {
-            header('Location: /auth');
+            header('Location: ' . SITE_URL . '/auth');
+            exit;
         }
         break;
         
